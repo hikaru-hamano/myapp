@@ -1,0 +1,52 @@
+<section class="hero is-success">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        予約内容入力画面
+      </h1>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-6">
+        <%= form_with model:@reservation do |f| %>
+
+          <%= f.hidden_field :user_id, value: @reservation.user_id %>
+          <%= f.hidden_field :room_id, value: @reservation.room_id %>
+      
+        <div class="col-md-6">
+          <table class="reservation-table">
+            <tbody>
+                <tr>
+                  <td><%= f.label :start_date, "開始日" %></td>
+                  <td><%= f.date_field  :start_date, class: 'form-control mb-4'  %></td>
+                </tr>
+                <tr>
+                  <td><%= f.label :end_date, "終了日" %></td>
+                  <td><%= f.date_field  :end_date, class: 'form-control mb-4'  %></td>
+                </tr>
+                <tr>
+                  <td><%= f.label :people, "人数" %><span>:</span></td>
+                  <td><%= @reservation.people %><span>人</span></td>
+                </tr>
+                
+                <tr>
+                  <td class="total">合計金額</td>
+                  <td><%= @reservation.total_price * @date_gap %><span>円</span></td>
+                </tr>
+              </tbody>
+          </table>
+        </div>
+
+            <%= f.submit "この日程で予約する", class:  "button is-success"   %>    
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+

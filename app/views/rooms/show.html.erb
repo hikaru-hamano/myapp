@@ -33,7 +33,7 @@
                   <td><%= simple_format @room.body %></td>
                 </tr>
                 <tr>
-                  <td><%= @room.money %></td>
+                  <td><%= @room.money %>円</td>
                 </tr>
                 <tr>
                   <td><%= @room.address %></td>
@@ -64,8 +64,17 @@
             </span>
             <%= @room.user.username %>さんのページへ
           <% end %>
+          <div class="column is-full">
+            <div class="card">
+              <div class="card-content">
+                <div class="media">
+                  <%= render 'reservations/form' %>                                
+                </div>
+              </div>
+            </div>
+          </div>
         </article>
       </div>
     </div>
-  </div>  
+  </div>
 </section>

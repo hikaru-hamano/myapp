@@ -4,4 +4,10 @@ Rails.application.routes.draw do
   root to: "home#index"
   resources :users
   resources :rooms
+  
+  resources :rooms do
+    resources :reservations
+  end 
+  
+  resources :reservations
 end

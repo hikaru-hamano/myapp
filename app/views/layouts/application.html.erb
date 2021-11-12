@@ -43,12 +43,16 @@
           </div>
             <div class="navbar-item">
             <%= link_to "新規投稿", new_room_path, class: "navbar-item button is-warning is-light" %>
+            </div>
             <div class="navbar-end">
              <div class="navbar-item">
               <div class="field is-grouped">
                 <p class="control">
                   <%= link_to "投稿者一覧", users_path, class: "button is-warning is-light" %>
                 </P>
+                <p class="control">
+                  <%= link_to "マイページ", user_path(current_user), class: "button is-warning is-light" %>
+                </p>
                 <p class="control">
                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "button is-warning is-light" %>
                 </p>
@@ -64,6 +68,9 @@
                 <p class="control">
                   <%= link_to "投稿者一覧", users_path, class: "button is-warning is-light" %>
                 </P>
+                <p class="control">
+                  <%= link_to "ルーム一覧", rooms_path, class: "navbar-item button is-warning is-light" %>
+                </p>
                 <p class="control">
                   <%= link_to "ログイン", new_user_session_path, class: "button is-warning is-light" %>
                 </p>

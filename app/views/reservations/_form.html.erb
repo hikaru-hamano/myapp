@@ -1,0 +1,22 @@
+<%= form_for([@room, @room.reservations.new]) do |f| %>
+
+    <div class="field is-horizontal">
+      <div class="field-body">
+        <div class="field">
+          <div class="col-md-6">
+            <%= f.label :start_date, "開始日" %>
+            <%= f.date_field  :start_date, class: 'form-control mb-4'  %>
+          </div>
+          <div class="col-md-6">
+            <%= f.label :end_date, "終了日" %>
+            <%= f.date_field :end_date, class: 'form-control mb-4' %>
+          </div>
+          <div class="col-md-6">
+            <%= f.label :people, "人数" %>
+            <%= f.number_field :people, class: 'form-control mb-4' %>
+          </div>
+        <%= f.submit "予約する", class: "button is-danger is-fullwidth m-t-10 m-b-10"  %>   
+      </div>
+    </div>
+   
+<% end %>

@@ -8,6 +8,16 @@
   </div>
 </section>
 
+<% if @room.errors.any? %>
+  <div class="notification is-danger">
+    <h2><%= pluralize(@room.errors.count, "error") %> prohibited this object from being saved: not successfully</h2>
+    <ul>
+      <% @room.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <section class="section">
   <div class="container">
