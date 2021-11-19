@@ -1,35 +1,43 @@
 class ReservationsController < ApplicationController
+
   def index
   end
 
-  def new
-    @reservation = Reservation.new(reservation_params)
-    @room = Room.find(params[:id])
-    @date_gap = @reservation.date_gap.to_i
-    
-    def total_price
-      @room.money * @reservation.people * @date_gap
-    end
-  end
+def new
+  @reservation = Reservation.new(reservation_params)
+  @room = Room.find_by(params[:id])
+  @price = @room.money
+  @reserver = @reservation.people
+  @days = (@reservation.end_date - @reservation.start_date).to_i
+  
+  @reservation.total_price = @days * @reserver * @price
+
+end
 
   def show
-    @reservation = Reservation.find(params)[:id]
-    @reservations = Reservation.all
-    @rooms = Room.all
+    @room = Room.find(params[:id])
+    @reservation = Reservation.find(params[:id])
   end
   
   def create
-    @reservation = current_user.reservations.create(reservation_params)
+    @reservation = Reservation.new(reservation_params)
+    @room = Room.find(params[:id])
+    @reservation.id = @room.id
+
     if @reservation.save
       flash[:notice] = "予約を完了しました"
-      redirect_to room_reservation_path(id: @reservation.id)
+      redirect_to  reservation_path(id: @reservation.id)
     else
-      render :new
+      render "rooms/show"
+      flash[:notice] = "予約に失敗しました"
     end
+
   end
   
+  
   private
-   def reservation_params
-     params.require(:reservation).permit(:start_date, :end_date, :money, :people, :total_price, :room_id).merge(user_id: current_user.id, room_id: params[:room_id])
+  def reservation_params
+    params.require(:reservation).permit(:start_date, :end_date, :people, :total_price).merge(user_id: current_user.id)
   end
+
 end

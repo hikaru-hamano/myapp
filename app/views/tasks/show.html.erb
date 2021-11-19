@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @task.title %>
+</p>
+<tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= room.title %></td>
+        <td><%= link_to 'Show', room %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>

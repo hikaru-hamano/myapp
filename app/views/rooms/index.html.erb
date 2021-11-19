@@ -11,7 +11,7 @@
 <section class="section">
   <div class="container">
     <div class="columns is-multiline">
-　　　<%= @rooms.each do |room| %>
+　　　<% @rooms.each do |room| %>
 　　　　<div class="column is-4">
           <div class="card">
             <div class="card-image">
@@ -34,7 +34,7 @@
               </div>
               
               <div class="content">
-                <time><%= room.set_date %></time>更新
+               <time><%= room.set_date %>更新</time>
               </div>
             </div>
           </div>

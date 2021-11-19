@@ -2,7 +2,7 @@
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-        予約内容入力画面
+        予約内容確認画面
       </h1>
     </div>
   </div>
@@ -13,11 +13,9 @@
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-6">
-        <%= form_with model:@reservation do |f| %>
-
-          <%= f.hidden_field :user_id, value: @reservation.user_id %>
-          <%= f.hidden_field :room_id, value: @reservation.room_id %>
-      
+        <%= form_with model: @reservation do |f| %>
+          
+          <%= hidden_field_tag :id, @room.id %>
         <div class="col-md-6">
           <table class="reservation-table">
             <tbody>
@@ -35,8 +33,9 @@
                 </tr>
                 
                 <tr>
-                  <td class="total">合計金額</td>
-                  <td><%= @reservation.total_price * @date_gap %><span>円</span></td>
+                  <td><%= f.label :total_price, "合計金額" %><span>:</span></td>
+                  <td><%= @reservation.total_price %><span>円</span></td>
+
                 </tr>
               </tbody>
           </table>

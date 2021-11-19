@@ -8,6 +8,11 @@
   </div>
 </section>
 
+<% if flash[:notice] %>
+  <p class="notice"><%= flash[:notice] %></p>
+<% end %>
+
+
 <section class="section">
   <div class="container">
     <div class="columns is-centered">
@@ -78,3 +83,19 @@
     </div>
   </div>
 </section>
+
+<script>
+    BulmaCarousel.attach('#carousel-photo', {
+        slidesToScroll: 1,
+        slidesToShow: 1
+    });
+    $(document).ready(function() {
+        $('#tabs li').on('click', function() {
+            var type = $(this).data('tab');
+            $('#tabs li').removeClass('is-active');
+            $(this).addClass('is-active');
+            $('.tab-content').hide();
+            $('#tab-' + type).show();
+        }) 
+    })
+</script>
