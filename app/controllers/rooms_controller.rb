@@ -43,6 +43,18 @@ class RoomsController < ApplicationController
     room.destroy
     redirect_to rooms_path
   end
+  
+  def search
+    if params[:search_area].present?
+      @rooms = Room.where('rooms.address LIKE(?)', "%#{params[:search_area]}%")
+    end
+    
+    if params[:search_keyword].present?
+      @rooms = Room.where('rooms.title LIKE(?) OR rooms.body LIKE(?) OR rooms.address LIKE(?)',
+                     "%#{params[:search_keyword]}%", "%#{params[:search_keyword]}%", "%#{params[:search_keyword]}%")
+    end
+  end
+  
     
   
   private

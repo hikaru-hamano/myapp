@@ -1,0 +1,39 @@
+<section class="hero is-success">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        検索結果：<%= @rooms.count %>件
+      </h1>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-6">
+        <table border="1">
+    　　　　<thead>
+      　　  　<tr>
+              <th>ルームイメージ</th>
+              <th>ルーム名</th>
+              <th>エリア</th>
+              <th>料金</th>
+              <th>詳細</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @rooms.each do |room| %>
+              <tr>
+                
+                <td><%= room.title %></td>
+                <td><%= room.address %></td>
+                <td><%= room.money %>円／日</td>
+                <td><%= link_to "詳細を見る", room  %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

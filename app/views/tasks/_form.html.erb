@@ -1,11 +1,11 @@
-<%= form_with(model: @task, url: task_path, method: :get, local: true) do |form| %>
+<%= form_tag(tasks_path, :method => "get") do %>
+ <%= text_field_tag :search %> 
+<%= submit_tag "Search" ,:address => nil ,class: "button is-info"%> 
+<% end %> 
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+<% @rooms.each do |room| %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
+
+ 
+

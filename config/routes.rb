@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :users
   resources :rooms
   resources :tasks
+  get "/search", to: "rooms#search"
+  post 'reserve/create',as:"reserve"
   
   resources :rooms do
     resources :reservations

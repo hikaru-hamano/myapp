@@ -28,13 +28,13 @@
                   <td><%= f.date_field  :end_date, class: 'form-control mb-4'  %></td>
                 </tr>
                 <tr>
-                  <td><%= f.label :people, "人数" %><span>:</span></td>
-                  <td><%= @reservation.people %><span>人</span></td>
+                  <td><%= f.label :people, "人数" %></td>
+                  <td><%= f.number_field  :people, class: 'form-control mb-4'  %></td>
                 </tr>
                 
                 <tr>
-                  <td><%= f.label :total_price, "合計金額" %><span>:</span></td>
-                  <td><%= @reservation.total_price %><span>円</span></td>
+                  <td><%= f.label :total_price, "合計金額" %></td>
+                  <td><%= f.number_field  :total_price %><span>円</span></td>
 
                 </tr>
               </tbody>

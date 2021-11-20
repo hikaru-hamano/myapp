@@ -12,4 +12,5 @@ class Room < ApplicationRecord
     validates :money
     
   end
+  
 end
