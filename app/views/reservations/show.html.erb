@@ -8,34 +8,40 @@
   </div>
 </section>
 
-<div class="container-fiuld user">
-    <div class="row">
-      <div class="d-flex">
-        <div class="col-md-12 user-view">
-          <div class="user-view-box"> 
-            <table>
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      
+      <div class="column is-7">
+        <div class="card">
+          <div class="card-image">
+            <div class="content">
+            <table class="table is-narrow">
               <tr class="update-content">
                 <th>ルーム画像</th>
-                <td><%= @room.image %></td>
+                <td><figure class="image is-4by3" "algin-items: center;">
+           　     <%= attachment_image_tag @room, :image %>
+                </figure></td>
+              </tr>
               <tr class="update-content">
                 <th>ルーム名</th>
                 <td><%= @room.title %></td>
               </tr>
               <tr class="update-content">
                 <th>開始日</th>
-                <td><%= @reservation.start_date.to_i %></td>
+                <td><%= @reservation.start_date.to_s %></td>
               </tr>
               <tr class="update-content">
                 <th>終了日</th>
-                <td><%= @reservation.end_date.to_i %></td>
+                <td><%= @reservation.end_date.to_s %></td>
               </tr>
               <tr class="update-content">
                 <th>価格</th>
                 <td><%= @reservation.total_price %><span>円</span></td>
               </tr>
-              </table>
-              <%= hidden_field_tag :id, @room.id %>
-
+            </table>
+            <%= hidden_field_tag :id, @room.id %>
+            </div>
             </div>
           </div>
         </div>
@@ -43,7 +49,7 @@
     </div>
     <div>
       <ul>
-        <li><%= link_to "トップ画面に戻る", user_path(current_user.id), class: "return_to_top" %></li>
+        <li><%= link_to "マイページに戻る", user_path(current_user.id), class: "return_to_top" %></li>
       </ul>
     </div>
   </div>

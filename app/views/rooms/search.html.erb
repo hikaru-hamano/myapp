@@ -11,29 +11,37 @@
 <section class="section">
   <div class="container">
     <div class="columns is-centered">
-      <div class="column is-6">
-        <table border="1">
-    　　　　<thead>
-      　　  　<tr>
-              <th>ルームイメージ</th>
-              <th>ルーム名</th>
-              <th>エリア</th>
-              <th>料金</th>
-              <th>詳細</th>
-            </tr>
-          </thead>
-          <tbody>
+      <div class="column is-3">
+        <div class="card">
+          <div class="card-image">
             <% @rooms.each do |room| %>
-              <tr>
-                
-                <td><%= room.title %></td>
-                <td><%= room.address %></td>
-                <td><%= room.money %>円／日</td>
-                <td><%= link_to "詳細を見る", room  %></td>
-              </tr>
+              <table "table is-narrow" border="1">
+                <tr class="update-content">
+                  <th>ルーム画像</th>
+                  <td><figure class="image is-4by3" "algin-items: center;">
+            　     <%= attachment_image_tag @room, :image %></figure>
+           　      </td>
+                <tr class="update-content">
+                  <th>ルーム名</th>
+                  <td><%= room.title %></td>
+                </tr>
+                <tr class="update-content">
+                  <th>エリア</th>
+                  <td><%= room.address %></td>
+                </tr>
+                <tr class="update-content">
+                  <th>料金</th>
+                  <td><%= room.money %>円／日</td>
+                </tr>
+                <tr class="update-content">
+                  <th>詳細</th>
+                  <td><%= link_to "詳細を見る", room  %></td>
+                </tr>
+              </table>
             <% end %>
-          </tbody>
-        </table>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</section>

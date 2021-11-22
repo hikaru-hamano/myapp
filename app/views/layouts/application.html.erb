@@ -41,11 +41,14 @@
           <div class="navbar-item">
             <%= link_to "ルーム一覧", rooms_path, class: "navbar-item button is-warning is-light" %>
           </div>
-            <div class="navbar-item">
+          <div class="navbar-item">
             <%= link_to "新規投稿", new_room_path, class: "navbar-item button is-warning is-light" %>
-            </div>
-            <div class="navbar-end">
-             <div class="navbar-item">
+          </div>
+          <div class="navbar-item">
+            <%= link_to "予約した部屋", reservation_path(current_user), class: "button is-warning is-light" %>
+          </div>
+          <div class="navbar-end">
+            <div class="navbar-item">
               <div class="field is-grouped">
                 <p class="control">
                   <%= link_to "投稿者一覧", users_path, class: "button is-warning is-light" %>

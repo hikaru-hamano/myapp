@@ -69,6 +69,7 @@
             </span>
             <%= @room.user.username %>さんのページへ
           <% end %>
+          <%= render 'devise/shared/error_messages', model: @reservation %>
           <div class="column is-full">
             <div class="card">
               <div class="card-content">
@@ -83,19 +84,3 @@
     </div>
   </div>
 </section>
-
-<script>
-    BulmaCarousel.attach('#carousel-photo', {
-        slidesToScroll: 1,
-        slidesToShow: 1
-    });
-    $(document).ready(function() {
-        $('#tabs li').on('click', function() {
-            var type = $(this).data('tab');
-            $('#tabs li').removeClass('is-active');
-            $(this).addClass('is-active');
-            $('.tab-content').hide();
-            $('#tab-' + type).show();
-        }) 
-    })
-</script>
