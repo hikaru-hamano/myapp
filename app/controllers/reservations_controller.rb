@@ -5,27 +5,31 @@ class ReservationsController < ApplicationController
 
 def new
   @reservation = Reservation.new(reservations_params)
-  @room = Room.find_by(params[:id])
-  price = @room.money
-  reserver = @reservation.people
-  days = (@reservation.end_date - @reservation.start_date).to_i
-  
-  @reservation.total_price = (days * reserver * price).to_i
-
-end
-
-  def show
-    @room = Room.find(params[:id])
-    @reservation = Reservation.find_by(params[:id])
+  @room = Room.find(params[:room_id])
+  @reservation.room_id = @room.id
+  if @reservation.invalid?
+      render "rooms/show"
+  else
     price = @room.money
     reserver = @reservation.people
     days = (@reservation.end_date - @reservation.start_date).to_i
     @reservation.total_price = (days * reserver * price).to_i
   end
+
+end
+
+  def show
+    @user = current_user.id
+    @reservations = Reservation.where(user_id: @user)
+    @reservations_roomid = Reservation.select(:room_id).where(user_id: @user)
+    @rooms = Room.where(id: @reservations_roomid)
+    binding.pry
+  end
   
   def create
+    @user = current_user.id
     @reservation = Reservation.new(reserve_params)
-    @room = Room.find(params[:id])
+    @room = Room.find_by(params[:id])
     @reservation.room_id = @room.id
     
     if @reservation.save
@@ -37,6 +41,7 @@ end
     end
 
   end
+  
   
   
   private

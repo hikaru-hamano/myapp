@@ -18,9 +18,10 @@
               <table "table is-narrow" border="1">
                 <tr class="update-content">
                   <th>ルーム画像</th>
-                  <td><figure class="image is-4by3" "algin-items: center;">
-            　     <%= attachment_image_tag @room, :image %></figure>
+                  <td><figure class="image is-4by3">
+            　     <%= attachment_image_tag room, :image %></figure>
            　      </td>
+           　   </tr>
                 <tr class="update-content">
                   <th>ルーム名</th>
                   <td><%= room.title %></td>

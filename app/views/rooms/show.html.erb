@@ -69,7 +69,7 @@
             </span>
             <%= @room.user.username %>さんのページへ
           <% end %>
-          <%= render 'devise/shared/error_messages', model: @reservation %>
+          <%= render 'devise/shared/error_messages', resource: @reservation %>
           <div class="column is-full">
             <div class="card">
               <div class="card-content">

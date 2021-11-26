@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
+
   def index
     @rooms = Room.all
   end
@@ -11,6 +12,7 @@ class RoomsController < ApplicationController
 
   def new
     @room = Room.new
+  
   end
   
   def create
@@ -39,21 +41,25 @@ class RoomsController < ApplicationController
     end
   end
   
-  def destroy
-    room = Room.find(params[:id])
-    room.destroy
-    redirect_to rooms_path
+  def check
+    @user = current_user.id
+    @reservations = Reservation.where(user_id: @user)
+    @reservations_roomid = Reservation.select(:room_id).where(user_id: @user)
+    @rooms = Room.where(id: @reservations_roomid)
+
   end
   
   def search
-    @user = User.all
     if params[:search_area].present?
-      @rooms = Room.where('rooms.address LIKE(?)', "%#{params[:search_area]}%")
+      @rooms= Room.paginate(page: params[:page], per_page: 100).search_area(params[:search_area])
+    else 
+      @rooms= Room.paginate(page: params[:page], per_page: 100).search_key(params[:search_key])
     end
     
-    if params[:search_keyword].present?
-      @rooms = Room.where('rooms.title LIKE(?) OR rooms.body LIKE(?) OR rooms.address LIKE(?)',
-                     "%#{params[:search_keyword]}%", "%#{params[:search_keyword]}%", "%#{params[:search_keyword]}%")
+    if params[:search_area].present?
+      @rooms_count = Room.paginate(page: params[:page], per_page: 5).search_area(params[:search_area]).count
+    else
+      @rooms_count = Room.paginate(page: params[:page], per_page: 5).search_key(params[:search_key]).count
     end
   end
   
