@@ -1,11 +1,12 @@
 class Reservation < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
   belongs_to :room, optional: true
   attachment :image  
   
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :people, presence: true
+   
    
   def start_end_check
     errors.add(:end_date, "は開始日より前の日付は登録できません。") unless

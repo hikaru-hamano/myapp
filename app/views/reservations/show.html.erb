@@ -2,49 +2,31 @@
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-       予約済みルーム一覧
+       予約詳細一覧
       </h1>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-7">
-         <div class="card">
-          <div class="card-image">
-            <div class="content">
-              <table class="table is-narrow">
-                <thead>
-                  <tr align="center">
-                    <th>ルーム画像</th>
-                    <th>ルーム名<br>予約詳細</th>
-                    <th>ルーム紹介</th>
-                  </tr>
-                </thead>
-                <div>
-                <% @rooms.each do |room| %>
-                  <tr align="center">
-                    <td><figure class="image is-4by3">
-           　              <%= attachment_image_tag room, :image %>
-                        </figure></td>
-                    <td width="150"><%= link_to room.title, check_path(@room) %></td>
-                    <td width="150"><%= room.body %></td>
-                  </tr>
-                <% end %>
-                </div>
-              </table>
-            </div>
-            <div>
-              <ul>
-                <li><%= link_to "マイページに戻る", user_path(current_user.id), class: "return_to_top" %></li>
-                
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="complete">
+  <table border="1" align="center">
+    <thead>
+      <tr align="center">
+        <th>ルーム名</th>
+        <th>利用人数</th>
+        <th>開始日</th>
+        <th>終了日</th>
+        <th>合計料金</th>
+      </tr>
+    </thead>
+    <% @rooms.zip(@reservations) do |room, reservation| %>
+    <tr>
+    　<td width="200" height="50" align="center"><%= room.title %></td>
+      <td width="150" height="50" align="center"><%= reservation.people %></td>
+      <td width="150" height="50" align="center"><%= reservation.start_date.to_s(:datetime_jp) %></td>
+      <td width="150" height="50" align="center"><%= reservation.end_date.to_s(:datetime_jp) %></td>
+      <td width="150" height="50" align="center"><%= reservation.total_price %></td>
+    </tr>
+   <% end %>
+  </table>
+</div>

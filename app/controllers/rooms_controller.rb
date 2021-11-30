@@ -42,11 +42,11 @@ class RoomsController < ApplicationController
   end
   
   def check
-    @user = current_user.id
+   
+ @user = current_user.id
     @reservations = Reservation.where(user_id: @user)
     @reservations_roomid = Reservation.select(:room_id).where(user_id: @user)
     @rooms = Room.where(id: @reservations_roomid)
-
   end
   
   def search
