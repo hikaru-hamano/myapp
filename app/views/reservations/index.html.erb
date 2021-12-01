@@ -28,12 +28,12 @@
                   </tr>
                 </thead>
                 <div>
-                  <% @user.reservations.zip(@rooms).each do |reservation, room| %>
+                  <% @reservations.each do |reservation| %>
                   <tr>
                     <td><figure class="image is-4by3">
-           　           <%= attachment_image_tag room, :image %></figure></td>
-                    <td><%= room.title %></td>
-                    <td><%= room.body %></td>
+                      <%= attachment_image_tag reservation.room, :image %></figure></td>
+                    <td><%= reservation.room.title %></td>
+                    <td><%= reservation.room.body %></td>
                     <td><%= reservation.people %></td>
                     <td><%= reservation.start_date %></td>
                     <td><%= reservation.end_date %></td>

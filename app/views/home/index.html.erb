@@ -8,44 +8,29 @@
       </div>
       <div class="columns is-centered">
         <div class="column is-5">
-              <br>
-                <%= link_to "ログイン", new_user_session_path, class: "button is-warning is-fullwidth" %>
-              <br>
-                <%= link_to "新規登録", new_user_registration_path, class: "button is-warning is-fullwidth" %>
-            </div>
-           </div>
+          <br>
+          <%= link_to "ログイン", new_user_session_path, class: "button is-warning is-fullwidth" %>
+          <br>
+          <%= link_to "新規登録", new_user_registration_path, class: "button is-warning is-fullwidth" %>
         </div>
-      </article>
-      <div class="column is-4">
-        <article class="panel is-link">
-          <div class="columns is-centered">
-            <div class="column is-5" algin="center">
-              <div class="form_area_field">
-                <%= form_tag(search_path, :method => "get") do %>
-                <%= text_field_tag :search_area, "",  class: "form-control col-12" %> 
-              </div>
-              <div class="search_area_btn">
-               <%= submit_tag "検索" ,:address => nil , class: "btn btn-primary col-12"%> 
-              <% end %> 
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-    <br>
-  <div class="columns is-centered">
-    <div class="column">
-      <figure>
-        <div class="main-image"></div>
-      </figure>
-      <div class="form_area_field">
-        <%= form_tag(search_path, :method => "get") do %>
-        <%= text_field_tag :search_area, "",  class: "form-control col-12" %> 
-      </div>
-      <div class="search_area_btn">
-        <%= submit_tag "検索" ,:address => nil , class: "btn btn-primary col-12"%> 
-        <% end %> 
       </div>
     </div>
+  </article>
+  <br>
+  <div class="top-wrapper">
+  <div class="main-search">
+    <div class="form-fream">
+      <div class="form-area">
+        <h2>TABI SHAREで思いがけない旅をしよう</h2>
+        <div class="search-field">
+          <p>エリア</p>
+          <%= form_with(url:search_path, class:'search_form', method: :get, local:true) do |f| %>
+            <%= f.text_field :search_area, class: 'field', value: params[:search], placeholder: "東京", class: "main-input" %>
+            <%= f.submit '探す', class: "main-btn" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
   </div>
 </section>

@@ -14,6 +14,8 @@
     <div class="columns is-centered">
       <div class="column is-6">
         <%= form_with model: @reservation, local:true do |f| %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.hidden_field :room_id, value: @room.id %>
         <div class="col-md-6">
           <table class="reservation-table">
             <tbody>
@@ -37,8 +39,7 @@
               </tbody>
           </table>
         </div>
-        <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= hidden_field_tag :id, @room_id %>
+        
         <%= f.submit "この日程で予約する", class:  "button is-success"   %>    
 
         <% end %>

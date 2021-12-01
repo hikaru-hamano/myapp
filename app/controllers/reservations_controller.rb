@@ -1,9 +1,9 @@
 class ReservationsController < ApplicationController
 
   def index
-    @user = User.find(1)
+    @user = User.find(current_user.id)
     @rooms = Room.all
-    @reservations = @user.reservations 
+    @reservations =  @user.reservations 
     
   end
 
@@ -34,8 +34,8 @@ class ReservationsController < ApplicationController
     @user = current_user.id
     @reservation = Reservation.new(reserve_params)
     @room = Room.find_by(params[:room_id])
-    @reservation.room_id = @room.id
     
+  
     if @reservation.save
       flash[:notice] = "予約を完了しました"
       redirect_to  reservations_path(@reservation)
@@ -53,7 +53,7 @@ class ReservationsController < ApplicationController
     params.permit(:start_date, :end_date, :people).merge(user_id: current_user.id)
   end
   def reserve_params 
-    params.require(:reservation).permit(:start_date, :end_date, :people, :total_price).merge(user_id: current_user.id)
+    params.require(:reservation).permit(:start_date, :end_date, :people, :total_price, :room_id).merge(user_id: current_user.id)
   end
 
 end

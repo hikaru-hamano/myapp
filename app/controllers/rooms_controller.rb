@@ -41,13 +41,12 @@ class RoomsController < ApplicationController
     end
   end
   
-  def check
-   
- @user = current_user.id
-    @reservations = Reservation.where(user_id: @user)
-    @reservations_roomid = Reservation.select(:room_id).where(user_id: @user)
-    @rooms = Room.where(id: @reservations_roomid)
+  def destroy
+    room = Room.find(params[:id])
+    room.destroy
+    redirect_to user_path(room.user), notice: "レシピを削除しました。"
   end
+
   
   def search
     if params[:search_area].present?
