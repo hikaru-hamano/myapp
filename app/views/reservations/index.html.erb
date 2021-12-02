@@ -1,0 +1,57 @@
+<section class="hero is-success">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+       予約済みルーム一覧
+      </h1>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-7">
+         <div class="card">
+          <div class="card-image">
+            <div class="content">
+              <table class="table is-narrow">
+                <thead>
+                  <tr align="center">
+                    <th>ルーム画像</th>
+                    <th>ルーム名<br>予約詳細</th>
+                    <th>ルーム紹介</th>
+                    <th>利用人数</th>
+                    <th>開始日</th>
+                    <th>終了日</th>
+                    <th>合計料金</th>
+                  </tr>
+                </thead>
+                <div>
+                  <% @reservations.each do |reservation| %>
+                  <tr>
+                    <td><figure class="image is-4by3">
+                      <%= attachment_image_tag reservation.room, :image %></figure></td>
+                    <td><%= reservation.room.title %></td>
+                    <td><%= reservation.room.body %></td>
+                    <td><%= reservation.people %></td>
+                    <td><%= reservation.start_date %></td>
+                    <td><%= reservation.end_date %></td>
+                    <td><%= reservation.total_price %></td>
+                  </tr>
+                  <% end %>
+                </div>
+              </table>
+            </div>
+            <div>
+              <ul>
+                <li><%= link_to "マイページに戻る", user_path(current_user.id), class: "return_to_top" %></li>
+                
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

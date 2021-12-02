@@ -1,0 +1,13 @@
+coders/
+config/
+filters/
+images/
+m4/
+Magick++/
+MagickCore/
+MagickWand/
+PerlMagick/
+scripts/
+tests/
+utilities/
+www/

@@ -1,0 +1,146 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bulma";
+
+.notification:not(:last-child){
+  margin-bottom: 0;
+}
+
+.profile_image {
+  border-radius: 50%;
+}
+
+.main-image {
+  height: 940px;
+  background-image: url(home1.jpeg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: relative; 
+  width: 100%;
+}
+
+.top-wrapper {
+  background-image: url(home1.jpeg);
+  background-size: cover;
+  width: 100%;
+  height: 650px;
+}
+
+.main-search {
+  flex: 0 0 50%;
+  max-width: 50%;
+  margin: auto;
+}
+
+.form-fream {
+  height: 650px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-area {
+  background: white;
+  padding: 24px;
+  border-radius: 5px;
+}
+.form-area h2 {
+  font-size: 28px;
+  line-height: 33px;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+}
+
+.main-input {
+  border: 0.5px solid lightgray;
+  height: 30px;
+  width: 400px;
+  margin-bottom: 10px;
+}
+
+::placeholder {
+  padding: 5px 0px 5px 10px;
+}
+
+.main-btn {
+  width: 100%;
+  padding: 5px 0px;
+  font-size: 15px;
+  background-color: dodgerblue;
+  border: 0.5px solid steelblue;
+  border-radius: 5px;
+  color: white;
+}
+
+// area-index-wrapper
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.area-index-wrapper {
+  margin: 3em;
+}
+
+.area-index-wrapper h2 {
+  font-size: 24px;
+  padding: 0 90px;
+  margin: 35px 0;
+  font-weight: bold;
+}
+
+.areas {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.area {
+  flex: 0 0 25%;
+  max-width: 25%;
+  text-align: center;
+  position: relative;
+  // padding-right: 30px;
+  // padding-left: 30px;
+}
+
+.area img {
+  width: 60%;
+  height: 360px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 25px;
+  vertical-align: middle;
+  border-style: none;
+}
+
+.area span {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-weight: bold;
+  z-index: 1;
+  margin: auto;
+  text-align: center;
+  font-size: 24px;
+}
+input#search_area.main-input {
+    padding: 0px 0px;
+}
