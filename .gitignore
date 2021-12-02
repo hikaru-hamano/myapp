@@ -38,3 +38,17 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+coders/
+config/
+filters/
+images/
+m4/
+Magick++/
+MagickCore/
+MagickWand/
+PerlMagick/
+scripts/
+tests/
+utilities/
+www/
